@@ -1,3 +1,6 @@
+var INITIAL = 1;
+var GAME_PLAYING = 2;
+var GAME_OVER = 3;
 FlappyMonster(canvas) {
   // Base
   var game = this;
@@ -8,6 +11,48 @@ FlappyMonster(canvas) {
 
   // Game State
   game.currentState = INITIAL;
-  
+ 
+}
 
+FlappyMonster.prototype.start = function() {
+   // Base
+  var game = this;
+  
+  // Start Game
+  window.requestAnimationFrame(function() {
+    game.runGameLoop();
+  });
+};
+
+FlappyMonster.prototype.runGameLoop = function() {
+   // Base
+  var game = this;
+
+  // Game State
+  switch (game.currentState) {
+    case INITIAL:
+       // DRAW INITIAL SCREEN
+      game.drawInitialScreen();
+      break;
+    case GAME_PLAYING:
+       // DRAW GAME PLAYING SCREEN
+      game.drawGamePlayingScreen();
+      break;
+    case GAME_OVER:
+      // DRAW GAME OVER SCREEN
+      game.drawGameOverScreen();
+      break;
+  }
+};
+FlappyMonster.prototype.drawInitialScreen = function() {
+  // Base
+  var game = this;
+}
+FlappyMonster.prototype.drawGamePlayingScreen = function() {
+  // Base
+  var game = this;
+}
+FlappyMonster.prototype.drawGameOverScreen = function() {
+  // Base
+  var game = this;
 }
