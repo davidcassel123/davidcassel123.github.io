@@ -16,6 +16,10 @@ FlappyMonster(canvas) {
 
   // Game State
   game.currentState = INITIAL;
+  
+  // Game Speed
+  game.velocity = 5;
+
 
   // Bind Events
   game.bindEvents();
@@ -29,7 +33,10 @@ FlappyMonster.prototype.createObjects = function() {
   // Base
   var game = this;
 
-  
+  game.background1 = new GameBackground('images/back.png', game.canvas);
+  game.background2 = new GameBackground('images/back.png', game.canvas);
+  game.background2.x = game.canvas.width;
+
 };
 
 FlappyMonster.prototype.bindEvents = function() {
@@ -114,16 +121,47 @@ FlappyMonster.prototype.drawGamePlayingScreen = function() {
   var game = this;
   // Draw
 
+  // Clear Canvas
+  game.context.clearRect(0, 0, game.canvas.width, game.canvas.height);
+
+  
   // Background
   game.context.fillStyle = 'black';
   game.context.fillRect(0, 0, game.canvas.width, game.canvas.height);
 
+  // Draw Background
+  game.animateBackground();
+
+  
   // Text
   game.context.fillStyle = 'white';
   game.context.font = '36px Arial';
   game.context.fillText('GAME PLAYING', game.canvas.width / 2 - 100, game.canvas.height / 2);
 
 }
+
+FlappyMonster.prototype.animateBackground = function() {
+  // Base
+  var game = this;
+
+  // Background 1
+  game.background1.draw();
+
+  if(Math.abs(game.background1.x) > game.canvas.width){
+    game.background1.x = game.canvas.width - game.velocity;
+  }
+  game.background1.x = game.background1.x - game.velocity;
+
+  // Background 2
+  game.background2.draw();
+
+  if(Math.abs(game.background2.x) > game.canvas.width){
+    game.background2.x = game.canvas.width - game.velocity;
+  }
+  game.background2.x = game.background2.x - game.velocity;
+};
+
+
 FlappyMonster.prototype.drawGameOverScreen = function() {
   // Base
   var game = this;
