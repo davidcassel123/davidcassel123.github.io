@@ -33,8 +33,8 @@ FlappyMonster.prototype.createObjects = function() {
   // Base
   var game = this;
 
-  game.background1 = new GameBackground('images/back.png', game.canvas);
-  game.background2 = new GameBackground('images/back.png', game.canvas);
+  game.background1 = new GameBackground('back.png', game.canvas);
+  game.background2 = new GameBackground('back.png', game.canvas);
   game.background2.x = game.canvas.width;
   
   // Score
@@ -124,29 +124,17 @@ FlappyMonster.prototype.drawInitialScreen = function() {
   game.context.fillText('Click to Start', game.canvas.width / 2 - 100, game.canvas.height / 2);
 }
 FlappyMonster.prototype.drawGamePlayingScreen = function() {
-  // Base
+/ Base
   var game = this;
-  // Draw
 
   // Clear Canvas
   game.context.clearRect(0, 0, game.canvas.width, game.canvas.height);
 
-  
-  // Background
-  game.context.fillStyle = 'black';
-  game.context.fillRect(0, 0, game.canvas.width, game.canvas.height);
-
   // Draw Background
   game.animateBackground();
 
-  // Draw Score
+// Draw Score
   game.gameScore.draw();
-  
-  // Text
-  game.context.fillStyle = 'white';
-  game.context.font = '36px Arial';
-  game.context.fillText('GAME PLAYING', game.canvas.width / 2 - 100, game.canvas.height / 2);
-
 }
 
 FlappyMonster.prototype.animateBackground = function() {
