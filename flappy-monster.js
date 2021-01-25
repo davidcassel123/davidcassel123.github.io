@@ -124,7 +124,7 @@ FlappyMonster.prototype.drawInitialScreen = function() {
   game.context.fillText('Click to Start', game.canvas.width / 2 - 100, game.canvas.height / 2);
 }
 FlappyMonster.prototype.drawGamePlayingScreen = function() {
-/ Base
+// Base
   var game = this;
 
   // Clear Canvas
