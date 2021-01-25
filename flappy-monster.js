@@ -160,6 +160,22 @@ FlappyMonster.prototype.drawWalls = function() {
 game.removeExtraWalls();
 };
 
+FlappyMonster.prototype.removeExtraWalls = function() {
+  // Base
+  var game = this;
+
+  // Draw Walls
+  var walls = game.wallFactory.walls;
+
+  for(var i = 0; i < walls.length; i++){
+    if(walls[i].x + walls[i].w < 0){
+      // remove
+      walls.shift();
+    }
+  }
+};
+
+
 
 FlappyMonster.prototype.animateBackground = function() {
   // Base
