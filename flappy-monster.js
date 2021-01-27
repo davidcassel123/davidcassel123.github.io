@@ -6,7 +6,7 @@ var KEY_CODE = {
   R: 82
 };
 
-FlappyMonster(canvas) {
+function FlappyMonster(canvas) {
   // Base
   var game = this;
 
